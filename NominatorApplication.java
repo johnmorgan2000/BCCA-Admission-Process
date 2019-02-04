@@ -4,7 +4,8 @@ public class NominatorApplication {
     public static void main(String[] args){
         
         NominatorInformation info =  makeNominatorInformation();
-        System.out.println(info);
+        Nominee nominee = makeNominee();
+        System.out.print(nominee);
 
     }
     public static String getInfo(String prompt) {
@@ -27,5 +28,12 @@ public class NominatorApplication {
     }
 
 
+    public static Nominee makeNominee(){
+        String name = getInfo("Name: ");
+        int age = Integer.parseInt(getInfo("Age: "));
+        String date = getInfo("Expected to Graduate: ");
+
+        return new Nominee(name, age, date);
+    }
 
 }
