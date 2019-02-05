@@ -11,7 +11,8 @@ public class FileIO {
         }
 
         try{
-            File file = new File(dir +"/"+ o.getInfo().name + ".ser");
+            String nomEmailName = o.getInfo().email.split("@")[0];
+            File file = new File(dir +"/"+ nomEmailName + ".ser");
             file.createNewFile(); 
 
             FileOutputStream fs = new FileOutputStream(file);
@@ -33,7 +34,6 @@ public class FileIO {
         
         
         for (File file : nomfiles){
-            
             Nominator nominator = readFile(file);
             if (nominator != null){
                 nominators.add(nominator);
