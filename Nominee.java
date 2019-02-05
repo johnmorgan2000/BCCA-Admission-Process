@@ -1,4 +1,6 @@
-public class Nominee{
+import java.io.Serializable;
+
+public class Nominee implements Serializable{
     public String name;
     public int age;
     public String date;

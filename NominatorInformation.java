@@ -1,4 +1,6 @@
-public class NominatorInformation{
+import java.io.Serializable;
+
+public class NominatorInformation implements Serializable{
     String email;
     String name;
     String district;

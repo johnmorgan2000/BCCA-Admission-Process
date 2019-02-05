@@ -1,4 +1,6 @@
-public class Qualification{
+import java.io.Serializable;
+
+public class Qualification implements Serializable{
     public String aptitudeQualifier;
     public String perseveranceQualifier;
     public String dedicationQualifier;
