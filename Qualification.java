@@ -26,7 +26,7 @@ public class Qualification implements Serializable{
         String format;
 
         if (optionalQualifier.equals("")){
-            format = "Aptitude\n%s\nPerserverance\n%s\nDedication\n%s\nWork Ethic\n%s\nAnything Else\n%s\n";
+            format = "--Qualifications--\nAptitude:\n%s\nPerserverance:\n%s\nDedication:\n%s\nWork Ethic:\n%s\nAnything Else:\n%s\n";
             return String.format(format, 
             aptitudeQualifier, 
             perseveranceQualifier, 
@@ -34,7 +34,7 @@ public class Qualification implements Serializable{
             workEthicHeartQualifier, 
             optionalQualifier);
         }
-        format = "Aptitude\n%s\nPerserverance\n%s\nDedication\n%s\nWork Ethic\n%s\n";
+        format = "--Qualifications--\nAptitude:\n%s\nPerserverance:\n%s\nDedication\n%s\nWork Ethic\n%s\n";
             return String.format(format, 
             aptitudeQualifier, 
             perseveranceQualifier, 

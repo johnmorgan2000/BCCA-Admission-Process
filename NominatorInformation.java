@@ -24,8 +24,17 @@ public class NominatorInformation implements Serializable{
     
     public String toString() {
         if (district.equals("")) {
-            return String.format("%s %s %s %s", email, name, position, relationship);
+            return String.format("--Information--\nEmail: %s\nName: %s\nPosition: %s\nRelationship: %s\n", 
+                                email, 
+                                name, 
+                                position, 
+                                relationship);
         }
-        return String.format("%s %s %s %s %s", email, name, position, district, relationship);
+        return String.format("--Information--\nEmail: %s\nName: %s\nPosition: %s\nDistrict: %s\nRelationship: %s", 
+                            email, 
+                            name, 
+                            position, 
+                            district, 
+                            relationship);
     }
 }

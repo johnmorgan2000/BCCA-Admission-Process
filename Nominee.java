@@ -12,6 +12,6 @@ public class Nominee implements Serializable{
     }
 
     public String toString(){
-        return String.format("%s %s %s", name, age, date);
+        return String.format("\n--Nominee--\nName: %s\nAge: %s\nDate: %s\n", name, age, date);
     }
 }
