@@ -5,21 +5,17 @@ public class NominatorApplication {
         
         NominatorInformation info =  makeNominatorInformation();
         Nominee nominee = makeNominee();
-        System.out.print(nominee);
+        Qualification qualification = makeQualification();
+        
 
-    }
-    public static String getInfo(String prompt) {
-        System.out.print(prompt);
-        String answer = stdin.nextLine();
-        return answer;
     }
 
     public static NominatorInformation makeNominatorInformation(){
-        String name = getInfo("Name: ");
-        String email = getInfo("Email: ");
-        String district = getInfo("School District: ");
-        String position = getInfo("Position: ");
-        String relationship = getInfo("Relationship to Nominee: ");
+        String name = Util.getSingleLine("Name: ", stdin);
+        String email = Util.getSingleLine("Email: ", stdin);
+        String district = Util.getSingleLine("School District: ", stdin);
+        String position = Util.getSingleLine("Position: ", stdin);
+        String relationship = Util.getSingleLine("Relationship to Nominee: ", stdin);
 
         if (district.equals("")){
             return new NominatorInformation(name, email, position, relationship);
@@ -29,11 +25,26 @@ public class NominatorApplication {
 
 
     public static Nominee makeNominee(){
-        String name = getInfo("Name: ");
-        int age = Integer.parseInt(getInfo("Age: "));
-        String date = getInfo("Expected to Graduate: ");
+        String name = Util.getSingleLine("Name: ", stdin);
+        int age = Integer.parseInt(Util.getSingleLine("Age: ", stdin));
+        String date = Util.getSingleLine("Expected to Graduate: ", stdin);
 
         return new Nominee(name, age, date);
     }
 
+    public static Qualification makeQualification() {
+        String aptitudeQualifier = Util.getMultiLines("Aptitude:", stdin);
+        String perseveranceQualifier = Util.getMultiLines("Perserverance:", stdin);
+        String dedicationQualifier = Util.getMultiLines("Dedication:", stdin);
+        String workEthicHeartQualifier = Util.getMultiLines("Work Ethic:", stdin);
+        String optionalQualifier = Util.getMultiLines("Anything else:", stdin);
+
+        return new Qualification(aptitudeQualifier, 
+                                perseveranceQualifier,         
+                                dedicationQualifier, 
+                                workEthicHeartQualifier, 
+                                optionalQualifier);
+        
+    }
 }
+
