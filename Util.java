@@ -58,7 +58,9 @@ public class Util {
         return "^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
     }
     public static String getEligibility(String prompt, Scanner stdin) {
+
         while(true) {
+            System.out.println(prompt);
             String answer = stdin.nextLine().trim().toLowerCase();
             if (answer.equals("y")) {
                 return answer;
