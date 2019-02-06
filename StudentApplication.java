@@ -5,6 +5,10 @@ public class StudentApplication{
         this.student = student;
         this.essay = essay;
     }
+
+    public String toString(){
+        return String.format("%s\n\n%s", student, essay);
+    }
     public Student getStudent() {
         return student;
     }

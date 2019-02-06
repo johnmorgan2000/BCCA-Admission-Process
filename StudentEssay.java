@@ -10,4 +10,9 @@ public class StudentEssay{
         this.dedication = dedication;
         this.passion = passion;
     }
+
+    public String toString(){
+        return String.format("Future Plans:\n%s\nAptitude:\n%s\nDedication:\n%s\nPassion:\n%s\n", plan, aptitude, dedication, passion); 
+    }
+    
 }

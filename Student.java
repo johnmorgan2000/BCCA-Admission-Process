@@ -13,7 +13,15 @@ public class Student{
         this.age = age;
         this.phone = phone;
         this.graduationDate = graduationDate;
-
     }
         
+    public String toString() {
+        return String.format("Name: %s\nEmail: %s\nSchool: %s\nAge: %s\nPhone: %s\nGraduation Date: %s",
+                name,
+                email,
+                school,
+                age,
+                phone,
+                graduationDate);
+    }
 }
