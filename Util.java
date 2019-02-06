@@ -1,6 +1,15 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.regex.Pattern;
+import java.io.*;
 public class Util {
+
+    public static File emailToFile(String email){
+        String fileName = email.split("@")[0];
+        File file = new File("./saves/nominators/"+ fileName + ".ser");
+        return file;
+    }
+
 
     public static String getSingleLine(String prompt, Scanner stdin, boolean isOptional) {
         if (isOptional){
@@ -20,7 +29,6 @@ public class Util {
         
         
     }
-
 
     public static String getSingleLine(String prompt, Scanner stdin, String regex) {
         while(true){
@@ -48,5 +56,17 @@ public class Util {
 
     public static String getEmailRegex(){
         return "^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
+    }
+    public static String getEligibility(String prompt, Scanner stdin) {
+        while(true) {
+            String answer = stdin.nextLine().trim().toLowerCase();
+            if (answer.equals("y")) {
+                return answer;
+            } 
+            if (answer.equals("n")) {
+                return answer;
+            }            
+        }
+
     }
 }
