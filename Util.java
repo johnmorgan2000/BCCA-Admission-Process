@@ -72,7 +72,7 @@ public class Util {
         return "^\\d{3}-\\d{3}-\\d{4}$";
     }
     
-    public static String getEligibility(String prompt, Scanner stdin) {
+    public static String getConfirmation(String prompt, Scanner stdin) {
 
         while(true) {
             System.out.println(prompt);
@@ -84,6 +84,8 @@ public class Util {
                 return answer;
             }            
         }
-
+        
+    
     }
+    
 }
