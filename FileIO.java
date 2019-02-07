@@ -101,11 +101,55 @@ public class FileIO{
             e.printStackTrace();
             return null;
         }
-    }       
+    }     
+    
+    public static ArrayList<Nomination> getAllNoms(){
+        File nominationsFolder = new File("./saves/nominators");
+        File[] nomFiles = nominationsFolder.listFiles();
+        ArrayList<Nomination>  allNoms = new ArrayList<>();
+        
+        for (File nomFile : nomFiles){
+            
+            ArrayList<Nomination> noms = readNominationFile(nomFile);
+            for(Nomination nom : noms){
+                if(!nom.equals(null)){
+                    allNoms.add(nom);
+                }
+                
+            }
+        }
+        return allNoms;
+    }
 
-    // public static ArrayLisgetEligibleStudents(){
+    public static ArrayList<StudentApplication> getAllStudentApplications(){
+        File studentFolder = new File("./saves/students");
+        File[] studentFiles = studentFolder.listFiles();
+        ArrayList<StudentApplication> allStudents = new ArrayList<>();
 
-    // }
+        for (File file : studentFiles){
+            StudentApplication student = readStudentFile(file);
+            allStudents.add(student);
+        }
+        return allStudents;
+    }
+
+    public static ArrayList<EligibleStudent> getEligibleStudents(){
+        ArrayList<Nomination> allNoms = getAllNoms();
+        ArrayList<StudentApplication> allStudentApps = getAllStudentApplications();
+        ArrayList<EligibleStudent> es = new ArrayList<>();
+
+        for (StudentApplication studentApp : allStudentApps) {
+            Student student = studentApp.getStudent();
+            
+            for (Nomination nom: allNoms) {
+                Nominee nominee = nom.getNominee();
+                if (student.name.equals(nominee.name)) {
+                    es.add(new EligibleStudent(studentApp, nom));
+                }
+            }
+        }
+        return es;
+    }
             
             
 
