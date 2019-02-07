@@ -4,12 +4,17 @@ import java.util.regex.Pattern;
 import java.io.*;
 public class Util {
 
-    public static File emailToFile(String email){
+    public static File emailToNominatorFile(String email){
         String fileName = email.split("@")[0];
         File file = new File("./saves/nominators/"+ fileName + ".ser");
         return file;
     }
 
+    public static File emailToStudentAppFile(String email) {
+        String fileName = email.split("@")[0];
+        File file = new File("./saves/students/" + fileName + ".ser");
+        return file;
+    }
 
     public static String getSingleLine(String prompt, Scanner stdin, boolean isOptional) {
         if (isOptional){
@@ -57,6 +62,16 @@ public class Util {
     public static String getEmailRegex(){
         return "^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
     }
+    public static String getAgeRegex(){
+        return "[0-1]{1}[0-9]{0,2}";
+    }
+    public static String getDateRegex(){
+        return "^\\d{2}-\\d{2}-\\d{4}$";
+    }
+    public static String getPhoneNumRegex(){
+        return "^\\d{3}-\\d{3}-\\d{4}$";
+    }
+    
     public static String getEligibility(String prompt, Scanner stdin) {
 
         while(true) {
