@@ -1,94 +1,113 @@
 import java.io.*;
 import java.util.*;
 
-public class FileIO {
+public class FileIO{
 
-    // public static void saveObject(Nomination o){
-    //     File dir = new File("./saves/nominators");
+    public static void saveNomination(Nomination nom){
+        File dir = returnDirectory("./saves/nominators");
+        String nomEmailName = nom.getInfo().email.split("@")[0];
+        File file = new File(dir +"/"+ nomEmailName + ".ser");
 
-    //     if (!dir.exists()){
-    //         dir.mkdirs();
-    //     }
+        ArrayList<Nomination> noms = returnObjectArray(nom, file);
+        noms.add(nom);
+        saveArray(noms, file);
 
-    //     try{
-    //         String nomEmailName = o.getInfo().email.split("@")[0];
-    //         File file = new File(dir +"/"+ nomEmailName + ".ser");
-    //         file.createNewFile(); 
+    }
 
-    //         FileOutputStream fs = new FileOutputStream(file, true);
-    //         ObjectOutputStream os = new ObjectOutputStream(fs);
+    public static File returnDirectory(String path){
+        File dir = new File(path);
 
-    //         os.writeObject(o);
-    //         os.close();
+        if (!dir.exists()){
+            dir.mkdirs();
+        }
+        return dir;
+    }
 
-    //     }catch(Exception e){
-    //         e.printStackTrace();
-    //     }
+    public static ArrayList<Nomination> returnObjectArray(Nomination o, File file){
+        ArrayList<Nomination> noms;
+    
+        if (file.exists()){
+            noms = deserializeNominationArray(file);
+        }
+        else{
+            noms = new ArrayList<>();
+        }
+        return noms;
+    }
+
+    public static ArrayList<Nomination> deserializeNominationArray(File file){
+        try{
+            FileInputStream fs = new FileInputStream(file);
+            ObjectInputStream os = new ObjectInputStream(fs);
+            ArrayList<Nomination> list =  (ArrayList<Nomination>) os.readObject();
+            os.close();
+            return list;
+        }catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static void saveArray(ArrayList<Nomination> list, File file){
+        try{
+            FileOutputStream fs = new FileOutputStream(file);
+            ObjectOutputStream os = new ObjectOutputStream(fs);
+            os.writeObject(list);
+            os.close();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public static ArrayList<Nomination> readNominationFile(File file){
+        try{
+            FileInputStream fi = new FileInputStream(file);
+            ObjectInputStream oi = new ObjectInputStream(fi);
+            ArrayList<Nomination> noms = (ArrayList<Nomination>) oi.readObject();
+            oi.close();
+            return noms;
+
+        }catch(Exception e){
+            System.out.println("Error reading file");
+            return null;
+        }
+    }
+
+    public static void saveStudentApplication(StudentApplication studentApp){
+        File dir = returnDirectory("./saves/students");
+        String email = studentApp.getStudent().email.split("@")[0];
+        File file = new File(dir + "/" + email + ".ser");
+
+        try{
+            FileOutputStream fs = new FileOutputStream(file);
+            ObjectOutputStream os = new ObjectOutputStream(fs);
+            os.writeObject(studentApp);
+            os.close();
+
+
+        }catch(IOException e) {
+            e.printStackTrace();
+        }   
+    }
+    public static StudentApplication readStudentFile(File file) {
+        
+        try {
+            FileInputStream fi = new FileInputStream(file);
+            ObjectInputStream oi = new ObjectInputStream(fi);
+            StudentApplication studentApp = (StudentApplication) oi.readObject();
+            oi.close();
+            return studentApp;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }       
+
+    // public static ArrayLisgetEligibleStudents(){
+
     // }
-
-
-
-    // public static ArrayList<Nomination> readFile(File file) {
-    //     ArrayList<Nomination> nominations = new ArrayList<>();
-    //      try {
-    //         FileInputStream fis = new FileInputStream(file);
-    //         ObjectInputStream ois = new ObjectInputStream(fis);
-    //         while (true) {
-    //             try{
-    //                 Nomination nomination = (Nomination) ois.readObject();
-    //                 nominations.add(nomination);
-    //             }catch(IOException e){
-    //                 e.printStackTrace();
-    //                 ois.close();
-    //                 break;
-    //             }
-    //         }
-
-    //         ois.close();
-    //         System.out.println(nominations);
-    //         return nominations;
-             
-
-    //     } catch (Exception e) {
-    //         e.printStackTrace();
-    //         return null;
-    //     }
-        
-    // }
-
-        // public static ArrayList<Nomination> returnNominatorNominations(File file){
-    //     try{
-    //         FileInputStream fs = new FileInputStream(file);
-    //         ObjectInputStream os = new ObjectInputStream(fs);
-    //         ArrayList<Nomination> list =  (ArrayList<Nomination>) os.readObject();
-    //         return list;
-    //     }catch(Exception e){
-    //         e.printStackTrace();
-    //         return null;
-    //     }
-        
-    // }
-
-
-    // public static ArrayList<Nomination> readNominations(){
-    //     File dir = new File("./saves/nominators/");
-    //     File[] nomfiles = dir.listFiles();
-    //     ArrayList<Nomination> nominators = new ArrayList<>();
-        
-        
-        
-    //     for (File file : nomfiles){
-    //         ArrayList<Nomination> nominations = readFile(file);
-    //         for (Nomination nomination: nominations){
-    //             if (nomination != null){
-    //                 nominators.add(nomination);
-    //             }
-    //         }
             
             
-    //     }
-    //     return nominators;  
-    // }
-
 
 }
+
