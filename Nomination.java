@@ -1,7 +1,7 @@
 import java.io.Serializable;
 
 public class Nomination implements Serializable{
-
+    private static final long serialVersionUID = -2779920603713771649L;
     private NominatorInformation info;
     private Nominee nominee;    
     
@@ -10,6 +10,10 @@ public class Nomination implements Serializable{
         this.info = info;
         this.nominee = nominee;
         
+    }
+
+    public String toString(){
+        return String.format( "Nominator Info:\n%s\n\n%sNominee:\n", info, nominee);
     }
 
 
@@ -21,5 +25,5 @@ public class Nomination implements Serializable{
         return nominee;
     }
 
-
+    
 }
