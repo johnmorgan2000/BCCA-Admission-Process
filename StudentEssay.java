@@ -1,4 +1,6 @@
-public class StudentEssay{
+import java.io.Serializable;
+
+public class StudentEssay implements Serializable{
     public String plan;
     public String aptitude;
     public String dedication;

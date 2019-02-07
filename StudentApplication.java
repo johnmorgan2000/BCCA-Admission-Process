@@ -1,4 +1,5 @@
-public class StudentApplication{
+import java.io.Serializable;
+public class StudentApplication implements Serializable{
     private Student student;
     private StudentEssay essay;
     StudentApplication(Student student, StudentEssay essay){
