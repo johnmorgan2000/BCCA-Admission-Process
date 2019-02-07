@@ -6,7 +6,7 @@ public class NominatorApplication {
         NominatorInformation info =  makeNominatorInformation();
         Nominee nominee = makeNominee();
         Nomination nom = new Nomination(info, nominee);
-        // FileIO.saveObject(nom);
+        FileIO.saveNomination(nom);
 
 
     }
@@ -37,9 +37,9 @@ public class NominatorApplication {
         System.out.println("\n-Nomminee-");
         System.out.println("[5/12] COMPLETED");String name = Util.getSingleLine("Name: ", stdin, false);
         System.out.println("");
-        System.out.println("[6/12] COMPLETED");int age = Integer.parseInt(Util.getSingleLine("Age: ", stdin, false));
+        System.out.println("[6/12] COMPLETED");int age = Integer.parseInt(Util.getSingleLine("Age: ", stdin, Util.getAgeRegex()));
         System.out.println("");
-        System.out.println("[7/12] COMPLETED");String date = Util.getSingleLine("Expected to Graduate: ", stdin, false);
+        System.out.println("[7/12] COMPLETED"); System.out.println("~In The Following Format MM-DD-YEAR~"); String date = Util.getSingleLine("Expected to Graduate: ", stdin, Util.getDateRegex());
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
         return new Nominee(name, age, date, makeQualification());
