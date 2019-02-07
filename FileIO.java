@@ -1,5 +1,7 @@
 import java.io.*;
 import java.util.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class FileIO{
 
@@ -149,6 +151,29 @@ public class FileIO{
             }
         }
         return es;
+    }
+    
+    public static void writeInterview(StudentApplication studentapp, ArrayList<Question> questions){
+        Student info = studentapp.getStudent();
+        String name = info.name;
+        File dir = returnDirectory("./saves/interviews");
+        File file = new File(dir + "/"+ name+".txt");
+        
+        try{
+            file.createNewFile();
+            FileWriter writer = new FileWriter(file);
+            writer.write(info.toString());
+            
+            for(Question q : questions){
+                writer.append("\n\n" + q.toString());
+            }
+            writer.close();
+
+
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+
     }
             
             
