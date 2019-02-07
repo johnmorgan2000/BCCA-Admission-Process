@@ -1,17 +1,25 @@
 import java.util.*;
 public class NominatorApplication {
-    public static Scanner stdin = new Scanner(System.in);
-    public static void main(String[] args){
-        
-        NominatorInformation info =  makeNominatorInformation();
-        Nominee nominee = makeNominee();
+    public NominatorInformation info;
+
+    public void runEntireApp(Scanner stdin){
+
+        NominatorInformation info =  makeNominatorInformation(stdin);
+        this.info = info;
+        Nominee nominee = makeNominee(stdin);
+        Nomination nom = new Nomination(this.info, nominee);
+        FileIO.saveNomination(nom);
+    }
+
+    public void runNomineeSection(Scanner stdin){
+        Nominee nominee = makeNominee(stdin);
         Nomination nom = new Nomination(info, nominee);
         FileIO.saveNomination(nom);
 
-
     }
 
-    public static NominatorInformation makeNominatorInformation(){
+    public NominatorInformation makeNominatorInformation(Scanner stdin){
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|");
         System.out.println("-Information-\n");
 
         System.out.println("[0/12] COMPLETED");String name = Util.getSingleLine("Name: ", stdin ,false);
@@ -24,7 +32,7 @@ public class NominatorApplication {
         System.out.println("");
         System.out.println("[4/12] COMPLETED");String relationship = Util.getSingleLine("Relationship to Nominee: ", stdin, false);
         
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|");
 
         if (district.equals("")){
             return new NominatorInformation(email, name, position, relationship);
@@ -33,37 +41,41 @@ public class NominatorApplication {
     }
 
 
-    public static Nominee makeNominee(){
+    public Nominee makeNominee(Scanner stdin){
         System.out.println("\n-Nomminee-");
         System.out.println("[5/12] COMPLETED");String name = Util.getSingleLine("Name: ", stdin, false);
         System.out.println("");
         System.out.println("[6/12] COMPLETED");int age = Integer.parseInt(Util.getSingleLine("Age: ", stdin, Util.getAgeRegex()));
         System.out.println("");
         System.out.println("[7/12] COMPLETED"); System.out.println("~In The Following Format MM-DD-YEAR~"); String date = Util.getSingleLine("Expected to Graduate: ", stdin, Util.getDateRegex());
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|");;
 
-        return new Nominee(name, age, date, makeQualification());
+        return new Nominee(name, age, date, makeQualification(stdin));
     }
 
-    public static Qualification makeQualification() {
+    public Qualification makeQualification(Scanner stdin) {
         System.out.println("\n-Qualifications-");
         System.out.println("~When Done Type (END) on its own line~ \n");
         System.out.println("[8/12] COMPLETED");String aptitudeQualifier = Util.getMultiLines("Aptitude:\t", stdin);
-        System.out.println("");
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++\n");
         System.out.println("[9/12] COMPLETED");String perseveranceQualifier = Util.getMultiLines("Perserverance:\t", stdin);
-        System.out.println("");
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++\n");
         System.out.println("[10/12] COMPLETED");String dedicationQualifier = Util.getMultiLines("Dedication:\t", stdin);
-        System.out.println("");
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++\n");
         System.out.println("[11/12] COMPLETED");String workEthicHeartQualifier = Util.getMultiLines("Work Ethic:\t", stdin);
-        System.out.println("");
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++\n");
         String optionalQualifier = Util.getMultiLines("Anything else:\t", stdin);
         System.out.println("[12/12] COMPLETED");
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|\n");
         return new Qualification(aptitudeQualifier, 
                                 perseveranceQualifier,         
                                 dedicationQualifier, 
                                 workEthicHeartQualifier, 
                                 optionalQualifier);
         
+    }
+    public void setNominatorInformation (NominatorInformation nominfo){
+        this.info = nominfo;
     }
 }
 
