@@ -20,7 +20,7 @@ public class StudentAppProgram{
         System.out.println("");
         System.out.println("[2/10] COMPLETED");String school = Util.getSingleLine("School you currently attend: ", stdin, false);
         System.out.println("");
-        System.out.println("[3/10] COMPLETED");String eligibility = Util.getEligibility("Do you meet our eligibility requirements?  [y/n] ", stdin);
+        System.out.println("[3/10] COMPLETED");String eligibility = Util.getConfirmation("Do you meet our eligibility requirements?  [y/n] ", stdin);
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|");
         if (eligibility.equals("n")){
             System.exit(0);
