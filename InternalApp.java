@@ -10,9 +10,11 @@ public class InternalApp {
         while (true) {
             String response = chooseApplication(stdin);
             if (response.equals("1")) {
+                Util.clearScreen();
                 ArrayList<Nomination> noms = getSearchNominators(stdin);
                 showNominators(noms);
             } else if (response.equals("2")) {
+                Util.clearScreen();
                 runInterview(stdin);
             } else if (response.equals("3")) {
                 System.exit(0);
@@ -22,6 +24,7 @@ public class InternalApp {
     }
 
     public static String chooseApplication(Scanner stdin) {
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|");
         System.out.println("[1] Search nominator by email\n[2] Search eligible students by name\n[3] Exit Application");
         while (true) {
             String response = Util.getSingleLine("Answer >>> ", stdin, false);
@@ -59,11 +62,13 @@ public class InternalApp {
                     return e.getApplication();
                 }
             }
+            System.out.println("Sorry that student is not eligible for an interview. Have they applied AND been nominated?");
         }
     }
 
     public static void getStudentNames() {
         ArrayList<EligibleStudent> es = FileIO.getEligibleStudents();
+        System.out.println("");
         for (EligibleStudent e : es) {
             System.out.println(e.getApplication().getStudent().name);
         }
@@ -113,6 +118,8 @@ public class InternalApp {
 
     public static void showNominators(ArrayList<Nomination> noms) {
         if (!noms.isEmpty()) {
+            Util.clearScreen();
+            System.out.println("Nominations Found:");
             System.out.println(noms.get(0).getInfo());
                 for(Nomination nom : noms){
                     System.out.println(nom.getNominee());
