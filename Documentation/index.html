@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Documentation</title>
+</head>
+<body>
+
+    <div id="nav-bar">
+        <h1>Documentation</h1>
+        <p>
+            <button class="homeBtn" onclick="renderHome()">Home</button> | 
+            <button class="" onclick="renderUseApp()">How to use App</button> | 
+            <!-- <button onclick="renderCodeDocs()">Code Documents</button> |  -->
+            <button class="aboutBtn" onclick="renderAbout()">About</button>
+        </p>
+    </div>
+
+    <div id="main">
+
+    </div>
+
+    <script id="home" type="text/x-handlebars-template">
+        <h1>Vote Team A</h1>
+    
+    </script>
+
+    <script id="useApp" type="text/x-handlebars-template">
+        <div id="nav-sections">
+            <a href="#externalApp">External App</a>
+        </div>
+
+        <div id="externalApp">
+             <h1>External App</h1>
+            <p>
+                Once you open the app, you will be prompted to select between three options.
+                <br>
+                1. <a href="#nominator-path">Nominate a student</a>
+                <br>
+                2. <a href="#student-path">Apply as student</a>
+                <br>
+                3. <a href="#exit-path">Exit</a>
+            </p>
+
+            <div id="nominator-path">
+                <h2>Nomination Path</h2>
+                <p>
+                    Selecting this path will ask you for your personal information.
+                    After you fill this section out, you'll move on to the next section of the application.
+                    Here you'll be asked information about the student you are nominating.
+                    The final step of this process will be filling out the student's qualification section.
+                    This section contains multiline answers and can only be completed by typing 'END' on a different line.
+                </p>    
+                <p>
+                    Completing the entire form will ask you whether you would like to elect another student or not.
+                    By saying yes, you will return to the part of the form where you elected a nominee without having to re-enter
+                    your own data.
+                    The no option will bring your back to the menu screen.
+                </p>
+            <div>
+            <div id="#student-path">
+                <h2>Student Application Path</h2>
+                <p>
+                    Selecting this path will ask the student for their personal information.
+                    At one section of the form, the student will be asked to insert multiple lines for an answer.
+                    To complete the multiline section, the student will have the type 'END' on a different line.
+                    Once the form is complete, the application will start back at the menu.
+                </p>
+            </div>
+            <div id="#exit-external-path">
+                <h2>The Exit Path</h2>
+                <p>
+                    The Exit path will shut down the program.
+                </p>
+            </div>
+        </div>
+        <div id="internalApp">
+            <h1>Internal App</h1>
+            <p>
+                Once you open the app, you will be prompted to select between three options.
+                    <br>
+                    1. <a href="#search-nominator-path">Nominate a student</a>
+                    <br>
+                    2. <a href="#search-student-path">Apply as student</a>
+                    <br>
+                    3. <a href="#exit-internal-path">Exit</a>
+            </p>
+            <div id="search-nominator-path">
+                <h2>Search nominators</h2>
+                <p>
+                    Selecting this path with give you two more options.
+                    You can either search up a nominator by their email or exit.
+                    If you enter in their email, you will be able to see all the information related
+                    that nominator. From there you are returned to the main menu. 
+                </p>
+            </div>
+            <div id="search-student-path">
+                <h2>Search Students</h2>
+                <p>
+                    Selecting this path will give you a list of eligible student to choose from.
+                    After typing out the name of the student, you will be shown all of that student's information.
+
+                    At the bottom of the student's information, you will be asked if you
+                    would like to conduct an interview with this student. This will begin the 
+                    <a href="#interviewProcess">Interview Process.</a>
+                </p>
+
+            </div>
+
+            <div id="interviewProcess">
+                <h2>Interview Process</h2>
+                <p>
+                    This path will let the user input their questions and the 
+                    student's answers. The questions are single line but the answers can contain multilines
+                    and can be submitted with 'END'. From there you'll be asked if you would like to asked another question or submit
+                    the interview.
+                    The interview can be viewed from the .txt files containing the student's name.
+                </p>
+            </div>
+        </div>
+    </script>
+
+
+    <script id="about" type="text/x-handlebars-template">
+        <h2>Documentation on how to use the application</h2>
+    </script>
+
+    <script src="javascript/handlebar.js"></script>
+    <script src="javascript/Data.js"></script>
+    <script src="javascript/index.js"></script>
+    
+</body>
+</html>
