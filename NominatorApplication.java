@@ -102,7 +102,7 @@ public class NominatorApplication {
         progress.increaseCurrent();
         Util.clearScreen();
 
-        System.out.println(progress);1
+        System.out.println(progress);
         String optionalQualifier = Util.getMultiLines("Anything else:\t", stdin);
         progress.increaseCurrent();
         System.out.println(progress);
