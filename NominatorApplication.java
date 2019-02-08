@@ -21,7 +21,7 @@ public class NominatorApplication {
 
     public NominatorInformation makeNominatorInformation(Scanner stdin, ProgressBar progress){
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|");
-        System.out.println("-Information-\n");
+        System.out.println("-Nominator Information-\n");
 
         System.out.println(progress);
         String name = Util.getSingleLine("Name: ", stdin ,false);
@@ -56,7 +56,7 @@ public class NominatorApplication {
 
 
     public Nominee makeNominee(Scanner stdin, ProgressBar progress){
-        System.out.println("\n-Nomminee-");
+        System.out.println("\n-Nominee Information-");
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|");
 
         System.out.println(progress);
@@ -70,8 +70,7 @@ public class NominatorApplication {
         progress.increaseCurrent();
 
         System.out.println(progress);
-        System.out.println("~In The Following Format MM-DD-YEAR~");
-        String date = Util.getSingleLine("Expected to Graduate: ", stdin, Util.getDateRegex());
+        String date = Util.getSingleLine("Expected to Graduate (MM-DD-YYYY): ", stdin, Util.getDateRegex());
         Util.clearScreen();
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|");;
 
