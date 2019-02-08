@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class StudentAppProgram{
     public void run(Scanner stdin){
-        ProgressBar progressBar = new ProgressBar(10, 0);
+        ProgressBar progressBar = new ProgressBar(11, 0);
         Student student = makeStudent(stdin, progressBar);
         StudentEssay essay = makeStudentEssay(stdin, progressBar);
         StudentApplication application = new StudentApplication(student, essay);
@@ -47,8 +47,7 @@ public class StudentAppProgram{
         Util.clearScreen();
         
         System.out.print(progressBar);System.out.println("");
-        System.out.println("~In The Following Format MM-DD-YEAR~");
-        String date = Util.getSingleLine("Expected Graduation Date: ", stdin, Util.getDateRegex());progressBar.increaseCurrent();
+        String date = Util.getSingleLine("Expected Graduation Date (MM-DD-YYYY): ", stdin, Util.getDateRegex());progressBar.increaseCurrent();
         Util.clearScreen();
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|");
         return new Student(name, email, school, age, phone, date);
@@ -68,7 +67,8 @@ public class StudentAppProgram{
         System.out.print(progressBar);
         String passion =  Util.getMultiLines("~Please tell us about something you are~ \n~passionate about & worked hard to achieve~\n\nPassion/ Persistance: ", stdin);
         progressBar.increaseCurrent();
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|");
+        System.out.print(progressBar);
+        
         return new StudentEssay(plan, aptitude, dedication, passion);
     }
 
