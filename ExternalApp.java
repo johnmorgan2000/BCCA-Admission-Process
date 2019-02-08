@@ -6,13 +6,17 @@ public class ExternalApp{
             String application = chooseApplication(stdin);
 
             if (application.equals("1")){
+                Util.clearScreen();
                 NominatorApplication nomApp = new NominatorApplication();
                 nomApp.runEntireApp(stdin);
                 electAnotherNominee(stdin, nomApp);
             }else if (application.equals("2")){
+                Util.clearScreen();
                 StudentAppProgram studentApp = new StudentAppProgram();
                 studentApp.run(stdin);
             }else if (application.equals("3")){
+                Util.clearScreen();
+                System.out.println("Exiting...");
                 stdin.close();
                 System.exit(0);
             }
