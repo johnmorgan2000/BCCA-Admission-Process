@@ -27,7 +27,7 @@ public class ProgressBar{
 
     public String toString(){
         if (current == length) {
-            return "Completed!";
+            return "Questionnaire Completed! Your answers have been saved!\n";
         }
         return String.format("[%s / %s] Completed", current, length);
         
