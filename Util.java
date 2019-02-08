@@ -4,6 +4,11 @@ import java.util.regex.Pattern;
 import java.io.*;
 public class Util {
 
+    public static void clearScreen() {  
+        System.out.print("\033[H\033[2J");  
+        System.out.flush();  
+       }
+
     public static File emailToNominatorFile(String email){
         String fileName = email.split("@")[0];
         File file = new File("./saves/nominators/"+ fileName + ".ser");
@@ -63,7 +68,7 @@ public class Util {
         return "^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
     }
     public static String getAgeRegex(){
-        return "[0-1]{1}[0-9]{0,2}";
+        return "^(0?[1-9]|[1-9][0-9]|[1][1-9][1-9]|200)$";
     }
     public static String getDateRegex(){
         return "^\\d{2}-\\d{2}-\\d{4}$";
