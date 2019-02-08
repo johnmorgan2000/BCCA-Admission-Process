@@ -55,7 +55,7 @@ public class Util {
         ArrayList<String> lines = new ArrayList<>();
         System.out.println(prompt);
         while (stdin.hasNextLine()) {
-            String line = stdin.nextLine();
+            String line = stdin.nextLine().trim();
             if (line.equals("END")){
                 break;
             }
@@ -87,7 +87,8 @@ public class Util {
             } 
             if (answer.equals("n")) {
                 return answer;
-            }            
+            }
+            System.out.println("Incorrect response. Please try again!");            
         }
         
     
